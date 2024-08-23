@@ -36,3 +36,7 @@ Hello, This is a Python language repo
 9. None: none
 10. Functions, modules, classes
 11. Advanced: Decorators, Generators, Iterator, MetaProgramming
+
+
+# Imp points:
+Data types are assigned to the Object/value that is stored not the variable
