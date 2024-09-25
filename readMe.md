@@ -15,6 +15,8 @@ Hello, This is a Python language repo
 3. compiled python ==> .pyc file(frozen binaries)
 
 
+
+
 # PVM - python virtual machine
 - run time engine like ( v8 in Js)
 - aka python interpreter
@@ -40,3 +42,10 @@ Hello, This is a Python language repo
 
 # Imp points:
 Data types are assigned to the Object/value that is stored not the variable
+
+# Notes:
+
+- In Python, variables defined inside a for or loop (or any loop) are still in the same scope as the rest of the code that surrounds the loop. Python does not create a separate block scope for loops, so variables declared in a loop are available after the loop ends.
+
+
+- In Python, if-else blocks also do not create a separate block scope, similar to loops. Any variables defined inside an if, elif, or else block will still be accessible outside of these blocks, provided that the block gets executed.
