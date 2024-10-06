@@ -18,3 +18,23 @@ if c > max_num:
     max_num = c;
 
 print(f"Max num is: {max_num}")
+
+# Another way to add comments to code
+"""print(f"Max num is: {max_num}")"""
+
+print(" i am",
+      " a god")
+
+# Chaining comparisons
+value = 1 <= 2<= 5
+print(f"value, {value}")
+
+
+print(5 < 9, 5 <= 9, 5 > 9, 5 >= 9, 5 == 9, 5 != 9)
+
+#Dynamic typing
+x = 10
+print(type(x))
+x = 19.8
+print(type(x))
+
