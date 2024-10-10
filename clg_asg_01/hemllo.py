@@ -1,2 +1,7 @@
-num = int(input("Enter a num: "))
-print(num)
+a = [1,2,3,4]
+
+
+
+
+
+
