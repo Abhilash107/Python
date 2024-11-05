@@ -14,7 +14,7 @@ def decimal_to_binary(num):
     temp = num
     res =""
     while(temp > 0):
-        res = str(temp%2)+ res #Nice lomgic
+        res = str(temp%2)+ res #Nice logic
         temp//=2
     
     return res
