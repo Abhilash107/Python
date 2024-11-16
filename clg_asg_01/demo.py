@@ -65,6 +65,15 @@
 
 # print(min_num, middle, max_num)
 
+days = int(input("Enter days: "))
+hours = int(input("Enter days: "))
+minutes = int(input("Enter days: "))
+seconds = int(input("Enter days: "))
+
+total_time = (days * 24 * 3600) +(hours * 3600) + (minutes * 60) + seconds
+print(total_time)
+
+
 
 
 
