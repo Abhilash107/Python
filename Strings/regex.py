@@ -66,18 +66,68 @@ pattern = '02215'
 # print('Match' if re.fullmatch(r'\d{3,6}', '12456655673') else 'No match')
 
 
+#sub function replaces all occurrences of a pattern with the replacement text you specify.
+# • the pattern to match (the tab character '\t')
+# • the replacement text (', ') and
+# • the string to be searched ('1\t2\t3\t4')
+# and returns a new string.
+# print(re.sub(r'\t', ', ', '1\t2\t3\t4'))
+# print(re.sub(r'\t', ', ', '1\t2\t3\t4', count=2))
+
+
+#The split function tokenizes a string, using a regular expression to specify the delimiter, and returns a list of strings
+# splitting it at any comma that’s followed by 0 or more whitespace characters—\s is the whitespace character class and * indicates zero or more occurrences
+#
+#print(re.split('\$+', '123$Main$$Street'))
+
+#Function search looks in a string for the first occurrence of a substring that matches a regular expression and returns a match object (of type SRE_Match) that contains the matching substring. The match object’s group method returns that substring:
+result = re.search('Python', 'Python is fun')
+##Function search returns None if the string does not contain the pattern:
+#print(result)
+#print(result.group() if result else 'not found')
+
+#Ignoring Case with the Optional flags Keyword Argument
+result3 = re.search('SaM', 'SAM WHITE', flags=re.IGNORECASE)
+print(result3.group() if result3 else 'Not found')
 
 
 
+#The ^ metacharacter at the beginning of a regular expression (and not inside square brackets) is an anchor indicating that the expression matches only the beginning of a string
+result = re.search('^Python', 'Python is fun')
+print(result.group() if result else 'not found')
+
+
+result = re.search('^is', 'Python is fun')
+print(result.group() if result else 'not found')
+
+#Similarly, the $ metacharacter at the end of a regular expression is an anchor indicating that the expression matches only the end of a string
+
+result = re.search('Python$', 'Python is fun')
+print(result.group() if result else "Not found")
+
+result = re.search('fun$', 'Python is fun')
+print(result.group() if result else "Not found")
 
 
 
+#Function findall finds every matching substring in a string and returns a list of the matching substrings.
+contact = 'Wally White, Home: 555-555-1234, Work: 555-555-4321'
+print(re.findall(r'\d{3}-\d{3}-\d{4}', contact))
 
 
+#Function finditer works like findall, but returns a lazy iterable of match objects. For large numbers of matches, using finditer can save memory because it returns one match at a time, whereas findall returns all the matches at once:
+for phone in re.finditer(r'\d{3}-\d{3}-\d{4}', contact):
+    print(phone.group())
 
 
+text = 'Charlie Cyan, e-mail: demo1@deitel.com'
+pattern = r'([A-Z][a-z]+ [A-Z][a-z]+), e-mail: (\w+@\w+\.\w{3})'
 
-
+res = re.search(pattern, text)
+print(res.group() if res else "haha")
+print(res.group(0))
+print(res.group(1))
+print(res.group(2))
 
 
 
