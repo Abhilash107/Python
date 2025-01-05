@@ -90,11 +90,11 @@ import numpy as np
 # arr8 = np.concatenate((arr1,arr2),axis = 1)
 # print(arr8)
 
-# 13.
+# 13.IMP
 # checkboard = np.tile(["*","_"],(5,5))
 # print(checkboard)
 
-# 14. 
+# 14. imp
 # arr = np.random.randint(0,100,(5,5))
 # print(arr)
 # print(np.bincount(arr.flatten()))
@@ -109,18 +109,18 @@ import numpy as np
 # print(mean_median(arr2))
 # print(mean_median(arr3))
 
-# 16. 
+# # 16. imp
 # arr = np.random.randint(10,100,(9,9,2))
-# print(arr)
-# ext_arr = arr[1:6,2:7]
+# # print(arr)
+# ext_arr = arr[1:6,2:7] imp
 # print(ext_arr)
 
 # 17.
-# arr = np.random.randint(10,20,(4,4))
-# arr = np.sort(arr,axis=0)
-# print(arr)
-# arr = np.sort(arr,axis=1)
-# print(arr)
+arr = np.random.randint(10,20,(4,4))
+arr = np.sort(arr,axis=0)
+print(arr)
+arr = np.sort(arr,axis=1)
+print(arr)
 
 # Pandas: 
 # import pandas as pd
