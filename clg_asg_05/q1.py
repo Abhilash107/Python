@@ -1,16 +1,17 @@
-# 1. IMP
+# # 1. IMP
 # n_std = int(input("Eneter number of studends: "))
 # mark_dict = {}
 # for i in range(n_std):
 #     name_std = input("Enter student name: ")
 #     mark_std = int(input("Enter mark of the student: "))
-#     mark_dict[name_std] = mark_std
+#     mark_dict.update({name_std:mark_std})
 # print(mark_dict)
 
 # 2.
 # s_name = input("Enter name for mark: ")
 # if s_name in mark_dict:
 #     print("Mark of the student is: ", mark_dict[s_name])
+
 
 # 3. 
 # n = int(input("Enter number of entries: "))
@@ -113,7 +114,7 @@
 #     set2 = set(list2)
 #     symmetric_difference = set1.symmetric_difference(set2)
 #     print(symmetric_difference)
-#     print(sorted(element * 2 if element % 2 == 0 else element + 5 for element in symmetric_difference))    
+#     print(sorted([element * 2 if element % 2 == 0 else element + 5 for element in symmetric_difference]))  
 # analyze_sets([1,2,5,4,5],[1,7,6])
 
 # 19. IMP

@@ -115,12 +115,12 @@ import numpy as np
 # ext_arr = arr[1:6,2:7] imp
 # print(ext_arr)
 
-# 17.
-arr = np.random.randint(10,20,(4,4))
-arr = np.sort(arr,axis=0)
-print(arr)
-arr = np.sort(arr,axis=1)
-print(arr)
+# 17.imp
+# arr = np.random.randint(10,20,(4,4))
+# arr = np.sort(arr,axis=0)
+# print(arr)
+# arr = np.sort(arr,axis=1)
+# print(arr)
 
 # Pandas: 
 # import pandas as pd
