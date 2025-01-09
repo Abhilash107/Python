@@ -36,19 +36,32 @@ import numpy as np
 # print(np.array([list1, list2]))
 
 # 6. imp
-# arr = np.full((2,3),2)**np.arange(6).reshape((2,3))
+#arr = np.full((2,3),2)** np.array([0,1,2,3,4,5]).reshape(2,3)
+
+
 # print(arr)
+
+
 # arrf = arr.flatten()
 # print(arrf)
+# arr[0] = 100
+# print(arr )
 # arrv = arr.ravel()
 # print(arrv)
 
+# arr[0] = 200
+# print(arr )
+
+# print(arrv)
+
 # 7.imp
-# arr = np.array([1,1,2,3,4,5,6,4,3,2,5,3,4,3,2,2,4,3,2,4,4,5,5,6,3,2,3,3,3,2,1,1,1,1])
-# print(arr.sum(), arr.min(), arr.max())
-# unique_elements, counts = np.unique(arr, return_counts=True)
-# for element, count in zip(unique_elements, counts):
-#     print(f'Element: {element}, Count: {count}')
+arr = np.array([1,1,2,3,4,5,6,4,3,2,5,3,4,3,2,2,4,3,2,4,4,5,5,6,3,2,3,3,3,2,1,1,1,1])
+print(arr.sum(), arr.min(), arr.max())
+unique_elements, counts = np.unique(arr, return_counts=True)
+for element, count in zip(unique_elements, counts):
+    print(f'Element: {element}, Count: {count}')
+
+
 
 # 8. 
 # arr = np.linspace(1.1, 6.6, 6).reshape((2,3))
@@ -97,7 +110,7 @@ import numpy as np
 # 14. imp
 # arr = np.random.randint(0,100,(5,5))
 # print(arr)
-# print(np.bincount(arr.flatten()))
+# print(np.bincount(arr.flat))
 
 # 15.
 # def mean_median(arr):
