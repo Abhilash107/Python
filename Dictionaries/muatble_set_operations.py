@@ -33,6 +33,13 @@ nums.remove(10)
 #     nums.remove(11)
 # KeyError: 11
 
+# try:
+#     num.remove(11)
+# except:
+#     print("hehe my bad")
+# finally:
+#     print("Error handled")
+
 # where as,
 nums.discard(11)# does not cause an exception
 # print(nums)# {0, 1, 2, 3, 4, 5, 6, 7}
