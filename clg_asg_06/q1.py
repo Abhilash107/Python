@@ -2,7 +2,7 @@ import numpy as np
 # 1.
 # print(np.zeros((3,3), int))
 # print(np.ones((2,3),int))
-# print(np.full((2,5),7,int))
+# print(np.full((2,5),7))
 
 # 2. 
 # arr = np.arange(4).reshape((2,2))
@@ -55,11 +55,11 @@ import numpy as np
 # print(arrv)
 
 # 7.imp
-arr = np.array([1,1,2,3,4,5,6,4,3,2,5,3,4,3,2,2,4,3,2,4,4,5,5,6,3,2,3,3,3,2,1,1,1,1])
-print(arr.sum(), arr.min(), arr.max())
-unique_elements, counts = np.unique(arr, return_counts=True)
-for element, count in zip(unique_elements, counts):
-    print(f'Element: {element}, Count: {count}')
+# arr = np.array([1,1,2,3,4,5,6,4,3,2,5,3,4,3,2,2,4,3,2,4,4,5,5,6,3,2,3,3,3,2,1,1,1,1])
+# print(arr.sum(), arr.min(), arr.max())
+# unique_elements, counts = np.unique(arr, return_counts=True)
+# for element, count in zip(unique_elements, counts):
+#     print(f'Element: {element}, Count: {count}')
 
 
 
@@ -89,7 +89,7 @@ for element, count in zip(unique_elements, counts):
 # arr1 = np.array([[0,1],[2,3]])
 # arr2 = np.array([[4,5],[6,7]])
 # arr3 = np.vstack((arr1,arr2))
-# print(arr3,"\t",arr3.shape)
+# #print(arr3,"\t",arr3.shape)
 # arr4 = np.hstack((arr1,arr2))
 # print(arr4,"\t",arr4.shape)
 # arr5 = np.vstack((arr4,arr4))
@@ -97,11 +97,11 @@ for element, count in zip(unique_elements, counts):
 # arr6 = np.hstack((arr3,arr3))
 # print(arr6,"\t",arr6.shape)
 
-# 12. IMP
+# # 12. IMP
 # arr7 = np.concatenate((arr1,arr2),axis = 0)
-# print(arr7)
+# print(arr7, "hh")
 # arr8 = np.concatenate((arr1,arr2),axis = 1)
-# print(arr8)
+# print(arr8, "hh")
 
 # 13.IMP
 # checkboard = np.tile(["*","_"],(5,5))
@@ -129,11 +129,11 @@ for element, count in zip(unique_elements, counts):
 # print(ext_arr)
 
 # 17.imp
-# arr = np.random.randint(10,20,(4,4))
-# arr = np.sort(arr,axis=0)
-# print(arr)
-# arr = np.sort(arr,axis=1)
-# print(arr)
+arr = np.random.randint(10,20,(4,4))
+arr = np.sort(arr,axis=0)
+print(arr)
+arr = np.sort(arr,axis=1)
+print(arr)
 
 # Pandas: 
 # import pandas as pd

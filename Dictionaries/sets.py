@@ -1,5 +1,5 @@
 # A set is an unordered collection of unique values
-# No, sets in Python do not display data in sorted order. The elements in a set are stored in an unordered manner because sets are implemented using hash tables, which prioritize quick lookups over maintaining order.
+# Sets in Python do not display data in sorted order. The elements in a set are stored in an unordered manner because sets are implemented using hash tables, which prioritize quick lookups over maintaining order.
 
 # Sets are mutable—you can add and remove elements, but set elements must be immutable.
 
