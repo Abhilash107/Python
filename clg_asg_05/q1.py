@@ -109,13 +109,13 @@
 # print("Symmetric difference of set1 and set2:", set1.symmetric_difference(set2))
 
 # 18. IMP
-# def analyze_sets(list1, list2):
-#     set1 = set(list1)
-#     set2 = set(list2)
-#     symmetric_difference = set1.symmetric_difference(set2)
-#     print(symmetric_difference)
-#     print(sorted([element * 2 if element % 2 == 0 else element + 5 for element in symmetric_difference]))  
-# analyze_sets([1,2,5,4,5],[1,7,6])
+def analyze_sets(list1, list2):
+    set1 = set(list1)
+    set2 = set(list2)
+    symmetric_difference = set1.symmetric_difference(set2)
+    print(symmetric_difference)
+    print(sorted([element * 2 if element % 2 == 0 else element + 5 for element in symmetric_difference]))  
+analyze_sets([1,2,5,4,5],[1,7,6])
 
 # 19. IMP
 # words = ["apple", "dogs", "cat", "bird", "fish", "zebra", "lion"]

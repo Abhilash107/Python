@@ -83,13 +83,13 @@ import numpy as np
 # print(f"Row 0,1: {arr[[0,1]]}")
 # print( arr[:, 2:5])
 # print(arr[0,3])
-# print(arr[:2,[0,2,4]])#imp
+# print(arr[0:2,[0,2,4]])#imp
 
 # 11. 
-# arr1 = np.array([[0,1],[2,3]])
-# arr2 = np.array([[4,5],[6,7]])
-# arr3 = np.vstack((arr1,arr2))
-# #print(arr3,"\t",arr3.shape)
+arr1 = np.array([[0,1],[2,3]])
+arr2 = np.array([[4,5],[6,7]])
+# arr3 = np.hstack((arr1,arr2))
+# print(arr3)
 # arr4 = np.hstack((arr1,arr2))
 # print(arr4,"\t",arr4.shape)
 # arr5 = np.vstack((arr4,arr4))
@@ -118,26 +118,26 @@ import numpy as np
 # arr1 = np.array([1,2,2,3,3,3,4,4])
 # arr2 = np.array([10,20,20,30,40,4])
 # arr3 = np.array([5,5,5,5,5])
+# print(arr1.mean())
 # print(mean_median(arr1))
 # print(mean_median(arr2))
 # print(mean_median(arr3))
 
 # # 16. imp
-# arr = np.random.randint(10,100,(9,9,2))
-# # print(arr)
+arr = np.random.randint(10,100,(2,9,2))
+# print(arr)
 # ext_arr = arr[1:6,2:7] imp
 # print(ext_arr)
 
 # 17.imp
 arr = np.random.randint(10,20,(4,4))
-arr = np.sort(arr,axis=0)
-print(arr)
+# arr = np.sort(arr,axis=0)
+# print(arr)
 arr = np.sort(arr,axis=1)
 print(arr)
 
-# Pandas: 
-# import pandas as pd
-# 18. 
+
+import pandas as pd 
 # data = {'A':[1,2,3], 'B':[4,5,6], 'C':[7,8,9]}
 # df = pd.DataFrame(data)
 # print(df)
@@ -148,11 +148,11 @@ print(arr)
 # s2 = [5,2,3,8]
 # pds1 = pd.Series(s1)
 # pds2 = pd.Series(s2)
-# print(pds1,'\n',pds2)
+# # print(pds1,'\n',pds2)
 # res = pds1[~pds1.isin(pds2)]
 # print(res)
 
-# 20.
+# # 20.
 # pds = pd.Series([1,1,3,7,50,45,50,1])
 # print(pds.value_counts())
 # print(pds.idxmin(),'\t',pds.idxmax())
@@ -196,7 +196,7 @@ print(arr)
 # 23.
 # data = {'Maxine':[1,2,3], 'James':[4,5,6], 'Amanda':[8,9,7]}
 # temp = pd.DataFrame(data)
-# print(temp)
+# # print(temp)
 # temp = pd.DataFrame(data, index = ['Morning', 'Afternoon', 'Evening'])
 # print(temp)
 # print(temp['Maxine'])
