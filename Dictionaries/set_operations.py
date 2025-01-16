@@ -28,7 +28,7 @@
 # that are not in common with one another. You can calculate the symmetric difference with
 # the ^ operator or with the set type’s symmetric_difference method:
 
-# print({1, 3, 5} ^ {2, 3, 4})
+#print({1, 3, 5} ^ {2, 3, 4})
 # print({1, 3, 5, 7}.symmetric_difference([2, 2, 3, 3, 4, 4]))
 
 # Disjoint:
