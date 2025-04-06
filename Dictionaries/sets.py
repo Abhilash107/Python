@@ -65,7 +65,7 @@ unique_words = set(string.split())
 
 # check for an improper subset with the set method issubset:
 # print({1, 3, 5}.issubset({3, 5, 1}))# True 
-# print({1, 2}.issubset({3, 5, 1}))# false
+print({1, 5}.issubset({3, 5, 1}))# false
 
 
 # similarly > , >= check for left is 
@@ -75,8 +75,8 @@ unique_words = set(string.split())
 # The >= operator tests whether the set to its left is an improper superset of the one to
 # its right—
 
-print({1, 3, 5}.issuperset({3, 5, 1}))# true
-print({1, 3, 5}.issuperset({3, 2}))# false
+print({1, 3, 5, 8}.issuperset({3, 5, 1}))# true
+print({1, 3, 5}.issuperset({3}))# false
 
 
 

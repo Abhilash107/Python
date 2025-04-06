@@ -13,7 +13,7 @@ pattern = '02215'
 # class is a regular expression escape sequence that matches one character. To match more
 # than one, follow the character class with a quantifier. The quantifier {5} repeats \d five
 # times, as if we had written \d\d\d\d\d, to match five consecutive digits
-# print('Valid' if re.fullmatch(r'\d{4}', '02215') else 'Invalid')
+#print('Valid' if re.fullmatch(r'\d{4}', '02215') else 'Invalid')
 
 
 # \d      Any digit (0–9).
@@ -25,8 +25,8 @@ pattern = '02215'
 # \W       Any character that is not a word character.
 
 
+#print('Valid' if re.fullmatch('[A-Z][a-z]*', 'W') else 'Invalid')
 # print('Valid' if re.fullmatch('[A-Z][a-z]*', 'Wally') else 'Invalid')
-# print('Valid' if re.fullmatch('[A-Z][a-z]*', 'Wa lly') else 'Invalid')
 # print('Valid' if re.fullmatch('[A-Z][a-z]*', 'W0lly') else 'Invalid')
 
 #The * quantifier matches zero or more occurrences
@@ -47,22 +47,22 @@ pattern = '02215'
 #+, which matches at least one occurrence of a subexpression
 #Both * and + are greedy—they match as many characters as possible
 # print('Valid' if re.fullmatch('[A-Z]+[a-z]', 'WWWWWWa') else 'Invalid')
-# print('Valid' if re.fullmatch('[A-Z][a-z]+', 'WWWWa') else 'Invalid')
+# print('Valid' if re.fullmatch('[A-Z][a-z]+', 'Waaa') else 'Invalid')
 
 
 #The ? quantifier matches zero or one occurrences of a subexpression:
 # print('Match' if re.fullmatch('labell?ed', 'labelled') else 'No match')
-# print('Match' if re.fullmatch('labell?ed', 'labellled') else 'No match')
+# print('Match' if re.fullmatch('label?ed', 'labeled') else 'No match')
 
 #Then l? indicates that there can be zero or one more l characters before the remaining literal ed characters
 
 #You can match at least n occurrences of a subexpression with the {n,} quantifier
 # print('Match' if re.fullmatch(r'\d{3,}', '123') else 'No match')
-# print('Match' if re.fullmatch(r'\d{3,}', '3') else 'No match')
+# print('Match' if re.fullmatch(r'\d{17,}', '3465645456456567876867') else 'No match')
 
 
 #You can match between n and m (inclusive) occurrences of a subexpression with the {n,m} quantifier.
-# print('Match' if re.fullmatch(r'\d{3,6}', '123') else 'No match')
+# print('true' if re.fullmatch(r'\d{3,6}', '123') else 'No match')
 # print('Match' if re.fullmatch(r'\d{3,6}', '12456655673') else 'No match')
 
 
@@ -84,50 +84,50 @@ pattern = '02215'
 result = re.search('Python', 'Python is fun')
 ##Function search returns None if the string does not contain the pattern:
 #print(result)
-#print(result.group() if result else 'not found')
+# print(result.group() if result else 'not found')
 
-#Ignoring Case with the Optional flags Keyword Argument
-result3 = re.search('SaM', 'SAM WHITE', flags=re.IGNORECASE)
-print(result3.group() if result3 else 'Not found')
+# #Ignoring Case with the Optional flags Keyword Argument
+# result3 = re.search('SaM', 'SAM WHITE', flags=re.IGNORECASE)
+# print(result3.group() if result3 else 'Not found')
 
 
 
 #The ^ metacharacter at the beginning of a regular expression (and not inside square brackets) is an anchor indicating that the expression matches only the beginning of a string
+# result = re.search('^Python', 'Python is fun') #IMP
+# print(result.group() if result else 'not found')
+
+
 result = re.search('^Python', 'Python is fun')
-print(result.group() if result else 'not found')
-
-
-result = re.search('^is', 'Python is fun')
 print(result.group() if result else 'not found')
 
 #Similarly, the $ metacharacter at the end of a regular expression is an anchor indicating that the expression matches only the end of a string
 
 result = re.search('Python$', 'Python is fun')
-print(result.group() if result else "Not found")
+# print(result.group() if result else "Not found")
 
-result = re.search('fun$', 'Python is fun')
-print(result.group() if result else "Not found")
+result = re.search('fun$', 'Python is fun') #IMP
+# print(result.group() if result else "Not found")
 
 
 
 #Function findall finds every matching substring in a string and returns a list of the matching substrings.
 contact = 'Wally White, Home: 555-555-1234, Work: 555-555-4321'
-print(re.findall(r'\d{3}-\d{3}-\d{4}', contact))
+#print(re.findall(r'\d{3}-\d{3}-\d{4,7}', contact))
 
 
 #Function finditer works like findall, but returns a lazy iterable of match objects. For large numbers of matches, using finditer can save memory because it returns one match at a time, whereas findall returns all the matches at once:
-for phone in re.finditer(r'\d{3}-\d{3}-\d{4}', contact):
-    print(phone.group())
+# for phone in re.finditer(r'\d{3}-\d{3}-\d{4}', contact):
+#     #print(phone.group())
 
 
-text = 'Charlie Cyan, e-mail: demo1@deitel.com'
-pattern = r'([A-Z][a-z]+ [A-Z][a-z]+), e-mail: (\w+@\w+\.\w{3})'
+text = 'Charlie Cyan, e-mail: demo1@deitel.in'
+pattern = r'([A-Z][a-z]+ [A-Z][a-z]+), e-mail: (\w+@\w+\.\w{2,3})'
 
 res = re.search(pattern, text)
 print(res.group() if res else "haha")
-print(res.group(0))
-print(res.group(1))
-print(res.group(2))
+# print(res.group(0))
+# print(res.group(1))
+# print(res.group(2))
 
 
 
