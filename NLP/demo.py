@@ -116,10 +116,10 @@ blob4 = TextBlob(Path(r'E:\Languages\Python\NLP\hehe.md').read_text())
 # Getting Definitions, Synonyms and Antonyms from WordNet
 from textblob import TextBlob
 happy = Word('happy')
-print(happy.definitions)
+# print(happy.definitions)
 #['enjoying or showing or marked by joy or pleasure', 'marked by good fortune', 'eagerly disposed to act or to be of service', 'well expressed and to the point']
 
-print(happy.synsets)
+# print(happy.synsets)
 # [Synset('happy.a.01'), Synset('felicitous.s.02'), Synset('glad.s.02'), Synset('happy.s.04')]
 
 synonyms = set()
@@ -128,21 +128,58 @@ for synset in happy.synsets:
     for lemma in synset.lemmas():
         synonyms.add(lemma.name())
 
-print(synonyms)#{'glad', 'felicitous', 'happy', 'well-chosen'}
+# print(synonyms)#{'glad', 'felicitous', 'happy', 'well-chosen'}
 
 
 lemmas = happy.synsets[0].lemmas()
-print(lemmas)# [Lemma('happy.a.01.happy')]
+# print(lemmas)# [Lemma('happy.a.01.happy')]
 
-print(lemmas[0].antonyms())# [Lemma('unhappy.a.01.unhappy')]
+# print(lemmas[0].antonyms())# [Lemma('unhappy.a.01.unhappy')]
 
-for i in happy.synsets:
-    lemmas = i.lemmas()
-    for j in lemmas:
-        antonyms = lemma.antonyms()
-        if antonyms:  # Check if there are antonyms
-            print(f"Antonyms of {lemma.name()}: {[antonym.name() for antonym in antonyms]}")
+# for i in happy.synsets:
+#     lemmas = i.lemmas()
+#     for j in lemmas:
+#         antonyms = lemma.antonyms()
+#         if antonyms:  # Check if there are antonyms
+#             print(f"Antonyms of {lemma.name()}: {[antonym.name() for antonym in antonyms]}")
         
 # deleting stop words
+from nltk.corpus import stopwords
+
+stops = stopwords.words('english')
+#print(stops)
+
+from textblob import TextBlob
+blob5 = TextBlob('Today is a beautiful day.')
+get_words = [word for word in blob5.words if word not in stops]
+# print(get_words)# ['Today', 'beautiful', 'day']
+
+# N grams:
+from textblob import TextBlob
+blob6 = TextBlob('Today is a beautiful day. Tomorrow looks like bad weather.')
+
+# print(blob6.ngrams())
+# [WordList(['Today', 'is', 'a']), 
+#  WordList(['is', 'a', 'beautiful']), 
+#  WordList(['a', 'beautiful', 'day']), 
+#  WordList(['beautiful', 'day', 'Tomorrow']), 
+#  WordList(['day', 'Tomorrow', 'looks']), 
+#  WordList(['Tomorrow', 'looks', 'like']), 
+#  WordList(['looks', 'like', 'bad']), 
+#  WordList(['like', 'bad', 'weather'])]
+# print(blob6.ngrams(n = 10))# [WordList(['Today', 'is', 'a', 'beautiful', 'day', 'Tomorrow', 'looks', 'like', 'bad', 'weather'])]
+# print(len(blob6.split()))# as word_count == 10 so out put for n = 10 is a list 
+# print(blob6.ngrams(n = 8))
+# print(len(blob6.ngrams(n = 8)))# 10 - 8 + 1
+# print(len(blob6.ngrams(n = 7)))# 10 - 7 + 1
+# print(len(blob6.ngrams(n = 6)))# 10 - 6 + 1
+
+# 12.3, 12.5 12.6, 12.7
+
+
+
+
+
+
 
 
