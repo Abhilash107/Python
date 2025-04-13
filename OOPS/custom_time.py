@@ -57,21 +57,21 @@ class Time:
     
 
     # Special Method __str__
-    def __str__(self):
-        """Print Time in 12-hour clock format"""
-        return (('12' if self.hour in (0, 12) else str(self.hour % 12)) +
-                f':{self.minute:0>2}:{self.second:0>2}' +
-                (' AM' if self.hour < 12 else ' PM'))
+    # def __str__(self):
+    #     """Print Time in 12-hour clock format"""
+    #     return (('12' if self.hour in (0, 12) else str(self.hour % 12)) +
+    #             f':{self.minute:0>2}:{self.second:0>2}' +
+    #             (' AM' if self.hour < 12 else ' PM'))
     
-    # @property
-    # def time(self):
-    #     """Return hour, minute and second as a tuple."""
-    #     return (self.hour, self.minute, self.second)
+    @property
+    def time(self):
+        """Return hour, minute and second as a tuple."""
+        return (self.hour, self.minute, self.second)
     
-    # @time.setter()
-    # def time(self, time_tuple):
-    #     """Set time from a tuple containing hour, minute and second."""
-    #     self.set_time(time_tuple[0], time_tuple[1], time_tuple[2])
+    @time.setter
+    def time(self, *time_tuple):
+        """Set time from a tuple containing hour, minute and second."""
+        self.set_time(time_tuple[0], time_tuple[1], time_tuple[2])
         
     
     
