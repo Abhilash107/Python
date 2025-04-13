@@ -1,24 +1,12 @@
-
+from custom_account import Account
 from decimal import Decimal
-class Account:
-    """A class that represents a bank account."""
 
-    def __init__(self, name, balance):
-        """Initialize the account with a name and balance."""
-        if balance < Decimal('0.00'):
-            raise ValueError("Balance cannot be negative")
-        self.name = name
-        self.balance = balance
+value = Decimal('12.34')
+account1 = Account('John Green', Decimal('50.00'))
 
-    def deposit(self, amount: float):
-        """Deposit money to the account."""
-        if amount > 0:
-            self.balance += amount
-
-    def withdraw(self, amount: float):
-        """Withdraw an amount from the account."""
-        if 0 < amount <= self.balance:
-            self.balance -= amount
-        else:
-            print("Insufficient funds or invalid amount")
-    
+print(account1.name)
+print(account1.balance)
+account1.deposit(Decimal('20.00'))
+print(account1.balance)
+account1.withdraw(Decimal('10.00'))
+print(account1.balance)
