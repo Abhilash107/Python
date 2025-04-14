@@ -40,7 +40,4 @@ class Complex:
         self.img = temp_img
         return self
 
-
-
-
 # Methods that overload binary operators must provide two parameters—the first (self) is the left operand and the second (right) is the right operand
