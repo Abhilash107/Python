@@ -324,6 +324,7 @@ Slower predictions but fast training.
 
 
 
+
 ### 📚 15.2.4 Splitting the Data for Training and Testing
 Machine learning models are typically trained on a subset of the data and tested on the rest to evaluate performance on unseen data.
 
@@ -340,3 +341,28 @@ Balanced datasets are assumed for fair evaluation (bundled sklearn datasets are 
 For reproducibility, use the random_state parameter (e.g., random_state=11) to ensure consistent splits across runs.
 
 Internally, ShuffleSplit is used for shuffling and splitting the data.
+
+
+
+🤖 What fit() Does (Normally):
+For most models (like decision trees, linear regression, neural networks):
+
+fit(X_train, y_train) does a lot of computation.
+
+The model learns patterns in the training data.
+
+Example: A linear model calculates the best slope and intercept for a line.
+
+🐢 What fit() Does in k-Nearest Neighbors (k-NN):
+It’s a lazy algorithm (yes, that’s the real term 😄).
+
+fit() just stores the training data in memory.
+
+It does not learn anything in advance.
+
+All the work happens during prediction, when it compares new data points to the stored training data.
+
+🔍 It's like having a big photo album and flipping through it to find which pictures look most like the new one you’re trying to classify.
+
+- For most, scikit-learn estimators, the fit method loads the data into the estimator then uses that data to perform complex calculations behind the scenes that learn from the data and train the model.
+
