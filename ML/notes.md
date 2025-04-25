@@ -366,3 +366,38 @@ All the work happens during prediction, when it compares new data points to the 
 
 - For most, scikit-learn estimators, the fit method loads the data into the estimator then uses that data to perform complex calculations behind the scenes that learn from the data and train the model.
 
+## Classification with k-Nearest Neighbors and the Digits Dataset, Part 2
+
+Once you’ve trained and tested a model, you’ll want to measure its accuracy. Here, we’ll
+look at two ways of doing this—a classification estimator’s score method and a confusion
+matrix.
+- 1. Estimator Method score:
+Each estimator has a score method that returns an indication of how well the estimator performs for the test data you pass as arguments. For classification estimators, this method returns the prediction accuracy for the test data
+
+- 2. Confusion Matrix:
+Another way to check a classification estimator’s accuracy is via a confusion matrix, which shows the correct and incorrect predicted values (also known as the hits and misses) for a given class. Simply call the function confusion_matrix from the sklearn.metrics module, passing the expected classes and the predicted classes as arguments.
+
+The correct predictions are shown on the diagonal from top-left to bottom-right. This is called the principal diagonal. The nonzero values that are not on the principal diagonal indicate incorrect predictions.
+
+- 3. Classification Report:
+The sklearn.metrics module also provides function classification_report, which
+produces a table of classification metrics5 based on the expected and predicted values
+
+
+
+In the report:
+• precision is the total number of correct predictions for a given digit divided by
+the total number of predictions for that digit. You can confirm the precision by
+looking at each column in the confusion matrix. For example, if you look at column
+index 7, you’ll see 1s in rows 3 and 4, indicating that one 3 and one 4 were
+incorrectly classified as 7s and a 45 in row 7 indicating the 45 images were correctly
+classified as 7s. So the precision for the digit 7 is 45/47 or 0.96.
+• recall is the total number of correct predictions for a given digit divided by the
+total number of samples that should have been predicted as that digit. You can
+confirm the recall by looking at each row in the confusion matrix. For example,
+if you look at row index 8, you’ll see three 1s and a 2 indicating that some 8s were
+incorrectly classified as other digits and a 39 indicating that 39 images were correctly
+classified. So the recall for the digit 8 is 39/44 or 0.89.
+• f1-score—This is the average of the precision and the recall.
+• support—The number of samples with a given expected value. For example, 50
+samples were labeled as 4s, and 38 samples were labeled as 5s.
