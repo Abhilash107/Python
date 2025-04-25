@@ -399,5 +399,33 @@ if you look at row index 8, you’ll see three 1s and a 2 indicating that some 8
 incorrectly classified as other digits and a 39 indicating that 39 images were correctly
 classified. So the recall for the digit 8 is 39/44 or 0.89.
 • f1-score—This is the average of the precision and the recall.
-• support—The number of samples with a given expected value. For example, 50
-samples were labeled as 4s, and 38 samples were labeled as 5s.
+• support—The number of samples with a given expected value. For example, 50 samples were labeled as 4s, and 38 samples were labeled as 5s.
+
+
+## K-Fold Cross-Validation
+
+- K-fold cross-validation enables you to use all of your data for both training and testing, to get a better sense of how well your model will make predictions for new data by repeatedly training and testing the model with different portions of the dataset.
+
+- K-fold cross-validation splits the dataset into k equal-size folds (this k is unrelated to k in the k-nearest neighbors algorithm). You then repeatedly train your model with k – 1 folds and test the model with the remaining fold.
+
+- Function cross_val_score returns an array of accuracy scores—one for each fold.
+
+
+
+### Running Multiple Models to Find the Best One
+  ***It’s difficult to know in advance which machine learning model(s) will perform best for a given dataset, especially when they hide the details of how they operate from their users. For this reason, you should run multiple models to determine which is the best for your study.***
+
+- Q. You should choose the best estimator before performing your machine learning study. **Answer: False.**
+
+
+### Hyperparameter Tuning
+- Hyperparameters are set before using the algorithm to train your model. In  real-world machine learning studies.
+
+- To determine the best value for k in the kNN algorithm, try different values of k then compare the estimator’s performance with each.
+
+- The following loop creates KNeighborsClassifiers with odd k
+values from 1 through 19 (again, we use odd k values in kNN to avoid ties) and performs
+k-fold cross-validation on each.
+
+
+***The default hyperparameter values make it easy for you to test estimators quickly. In real-world machine learning studies, you’ll want to use hyperparameter tuning to choose hyperparameter values that produce the best possible predictions.***
