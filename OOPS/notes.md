@@ -512,13 +512,47 @@ Fill-In: Most exceptions inherit from **Exception** and are defined in module **
 True/False: You should generally use a new exception class when raising exceptions.
 Answer: ❌ False — Prefer existing exception classes.
 
-
 ## 10.14 to be done:::::
+
+## 10.15 to be done:::::
+
+Namespaces and Scope in Python
+Namespaces associate identifiers with objects and are implemented like dictionaries. They define scope and are independent of each other, allowing the same name in different namespaces. Python mainly uses three namespaces: local, global, and built-in.
+
+Local Namespace:
+Created when a function/method is called. It holds parameters and local variables, existing only during that function’s execution.
+
+Global Namespace:
+Created when a module loads. It holds global variables, functions, and classes, and persists until the program ends. An IPython session has its own global namespace. Modules also have a __name__ identifier (e.g., 'math', '__main__').
+
+Built-in Namespace:
+Created when the interpreter starts. It holds built-in functions (like input, print) and types (int, str, etc.) and stays until the program ends.
+
+Identifier Search Order:
+When you use a name, Python searches in order: local → global → built-in.
+Example:
+
+Inside a function, Python first looks in the local namespace.
+
+If not found, it checks the global namespace.
+
+If still not found, it checks the built-in namespace.
+
+If missing everywhere, it raises a NameError.
+
+Nested Functions (LEGB Rule):
+In nested functions, Python searches:
+Local → Enclosing → Global → Built-in.
+
+Class Namespace:
+Classes have their own namespace storing class attributes. If an attribute isn't found, Python searches parent classes up to the base object.
+
+Object Namespace:
+Each object has its own namespace for instance attributes, typically added during __init__.
 
 
 
 ## 10.16 Time Series and Simple Linear Regression
-
 
 📊 Time Series & Simple Linear Regression in Python
 🔷 What Are Time Series?
@@ -578,6 +612,178 @@ matplotlib	Visualization backend
 seaborn	Enhanced visualizations
 scikit-learn	(In ML chapter) regression modeling
 RNNs (Deep Learning)	(In DL chapter) for complex time series
+
+
+
+
+
+## new
+
+
+
+
+Time Series and Simple Linear Regression Overview
+Time series are sequences of observations associated with specific time points — like daily stock prices, hourly temperatures, or tweets with timestamps.
+
+In this section, we’ll predict NYC’s average January high temperatures from 1895 to 2018 using simple linear regression.
+
+Later, we'll explore time series further:
+
+With scikit-learn in the Machine Learning chapter.
+
+With RNNs in the Deep Learning chapter.
+
+In financial applications and IoT in the Big Data chapter.
+
+We'll use:
+
+Seaborn and pandas (built on Matplotlib) for graphs.
+
+Launch IPython with Matplotlib:
+
+css
+Copy
+Edit
+ipython --matplotlib
+Time Series Types
+Univariate: One observation per time (e.g., January high temperature each year).
+
+Multivariate: Multiple observations (e.g., temperature, humidity, pressure).
+
+Two main tasks:
+
+Time series analysis: Find patterns (like seasonality).
+
+Time series forecasting: Predict future values (our goal here).
+
+Simple Linear Regression
+We predict by fitting a straight line:
+
+𝑦
+=
+𝑚
+𝑥
++
+𝑏
+y=mx+b
+where:
+
+𝑚
+m = slope
+
+𝑏
+b = intercept
+
+𝑥
+x = independent variable (year)
+
+𝑦
+y = dependent variable (temperature)
+
+Example: Fahrenheit to Celsius is a linear relationship:
+
+𝑐
+=
+5
+9
+(
+𝑓
+−
+32
+)
+c= 
+9
+5
+​
+ (f−32)
+Using linregress from SciPy’s stats module, we find the best-fit line by minimizing the sum of squared distances (Ordinary Least Squares method).
+
+Data Preparation
+Data from NOAA's "Climate at a Glance" portal (1895–2018).
+
+Provided in file: ave_hi_nyc_jan_1895-2018.csv.
+
+Columns:
+
+Date: 'YYYYMM' format (MM is always '01' for January)
+
+Value: Average high temperature (°F)
+
+Anomaly: (Not used)
+
+Steps:
+
+Load CSV into a pandas DataFrame.
+
+Rename 'Value' column to 'Temperature'.
+
+Remove '01' from dates by integer division (floordiv(100)).
+
+Basic Data Analysis
+Use describe() to get quick stats:
+
+124 observations.
+
+Mean temp: 37.60°F.
+
+Min: 26.10°F, Max: 47.60°F.
+
+Forecasting
+Use linregress:
+
+python
+Copy
+Edit
+from scipy.stats import linregress
+linear_regression = linregress(x, y)
+Predict temperature for 2019 using:
+
+𝑦
+=
+(
+𝑠
+𝑙
+𝑜
+𝑝
+𝑒
+×
+2019
+)
++
+𝑖
+𝑛
+𝑡
+𝑒
+𝑟
+𝑐
+𝑒
+𝑝
+𝑡
+y=(slope×2019)+intercept
+Similarly, predict for 1890 (before the dataset started).
+
+Note: Predictions far outside 1895–2018 are less reliable.
+
+Visualization
+Use Seaborn’s regplot to plot:
+
+Scatter plot of Date vs. Temperature.
+
+Regression line showing warming trend.
+
+Adjust the y-axis (e.g., range 10–70°F) to better visualize the linear relationship.
+
+python
+Copy
+Edit
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.regplot(x=df.Date, y=df.Temperature)
+plt.ylim(10, 70)
+plt.show()
+Summary:
+You learned how to clean, analyze, forecast, and visualize time series data using simple linear regression, pandas, Seaborn, and SciPy.
 
 
 
