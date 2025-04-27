@@ -53,8 +53,14 @@ axes = sns.regplot(x=nyc.Date, y=nyc.Temperature)
 axes.set_ylim(10, 70)
 # plt.show()
 
-while y_1 < 40.0:
-    x_1 += 1
-    y_1 = m * x_1 + c
+year = 2019
+intercept = l_r.intercept
+slope = l_r.slope
+temp = temp = slope * year + intercept
 
-print(x_1)
+while temp < 40.0:
+    year += 1
+    temp = slope * year + intercept
+    
+
+print(year)
