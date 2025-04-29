@@ -175,6 +175,148 @@ blob6 = TextBlob('Today is a beautiful day. Tomorrow looks like bad weather.')
 # print(len(blob6.ngrams(n = 6)))# 10 - 6 + 1
 
 # 12.3, 12.5 12.6, 12.7
+# Visualizing Word Frequencies with Bar Charts and Word Clouds
+
+# Visualizing Word Frequencies
+# Visualizing word frequencies can enhance corpus analysis. Depending on your focus, different visualizations work better:
+
+#Bar Chart: Shows the top 20 words in Romeo and Juliet with bars representing their frequencies.
+
+# Word Cloud: Displays frequent words larger and less frequent words smaller.
+
+
+#Loading the Data
+from pathlib import Path
+from textblob import TextBlob
+
+blob7 = TextBlob(Path(r'E:\Languages\Python\NLP\romeojuliet.txt').read_text())
+
+from nltk.corpus import stopwords
+stop_words = stopwords.words('english')
+
+
+#Getting the Word Frequencies
+# Loading and Processing Data
+# First, load Romeo and Juliet into IPython from the ch12 examples folder, along with NLTK's stopwords.
+
+# Get word-frequency pairs using blob.word_counts.items().
+
+# Remove stop words with a list comprehension: check if item[0] is not in stop_words.
+
+# Sort the remaining words by frequency in descending order using sorted with itemgetter(1).
+
+# Finally, slice the sorted list to get the top 20 words.
+
+from pathlib import Path
+from textblob import TextBlob
+from nltk.corpus import stopwords
+from operator import itemgetter
+
+blob = TextBlob(Path(r'E:\Languages\Python\NLP\romeojuliet.txt').read_text())
+stop_words = stopwords.words('english')
+items = blob.word_counts.items()
+items = [item for item in items if item[0] not in stop_words]
+sorted_items = sorted(items, key=itemgetter(1), reverse=True)
+
+# Getting Top 20 Words and Visualizing
+# Since the most frequent "word" is an apostrophe, we skip it and slice elements 1–20 from sorted_items.
+
+# Convert the top20 list of tuples into a pandas DataFrame for easier plotting.
+
+# Visualize the DataFrame using the bar method, setting x='word', y='count', and disabling the legend.
+
+# Use plt.gcf().tight_layout() to adjust the layout and prevent word truncation.
+
+top20 = sorted_items[1:21]
+
+import pandas as pd
+df = pd.DataFrame(top20, columns=['word', 'count'])
+print(df)
+
+axes = df.plot.bar(x='word', y='count', legend=False)
+
+import matplotlib.pyplot as plt
+plt.gcf().tight_layout()
+
+
+# 12.4: Readability Assessment with Textatistic
+# Readability Assessment with Textatistic
+# Readability depends on vocabulary, sentence structure, length, and topic. We'll use the Textatistic library, which supports formulas like Flesch Reading Ease, Flesch-Kincaid, Gunning Fog, SMOG, and Dale-Chall.
+
+# Installation:
+# pip install textatistic
+# (Windows users: Run Anaconda Prompt as Administrator if needed.)
+# Calculating Readability:
+# Load Romeo and Juliet into a text variable.
+# Create a Textatistic object and call dict() to get stats and scores.
+
+from pathlib import Path
+from textatistic import Textatistic
+
+text = Path(r'E:\Languages\Python\NLP\romeojuliet.txt').read_text()
+readability = Textatistic(text)
+print(readability.dict())
+print(readability.char_count)
+print(readability.word_count)
+print(readability.sent_count)
+print(readability.sybl_count)
+print(readability.notdalechall_count)
+print(readability.polysyblword_count)
+print(readability.word_count)
+# Statistics Provided:
+
+# char_count: Characters
+# word_count: Words
+# sent_count: Sentences
+# sybl_count: Syllables
+# notdalechall_count: Words not familiar to 5th graders
+# polysyblword_count: Words with 3+ syllables
+
+# Readability Scores:
+
+# flesch_score: Higher = easier (90+ = 5th grade, <30 = college level)
+# fleschkincaid_score, gunningfog_score, smog_score, dalechall_score: All map to grade/education levels.
+# gunningfog_score: Estimates the grade level needed to understand the text.
+# smog_score: Estimates years of education required; very effective for healthcare materials.
+# dalechall_score: Maps to grade levels (4th grade to college graduate); highly reliable across text types.
+
+
+## (Fill-In) ________ indicates how easy is it for readers to understand text. Answer: Readability.
+
+
+# 12.5 Named Entity Recognition with spaCy
+# NLP can determine what a text is about. A key aspect of this is named entity recognition, which attempts to locate and categorize items like dates, times, quantities, places, people, things, organizations and more
+# //*  Named entity recognition attempts to locate and categorize items like dates, times, quantities, places, people, things, organizations and more.
+
+
+# Install spaCy
+
+# Loading the Language Model
+# The first step in using spaCy is to load the language model representing the natural language
+# of the text you’re analyzing. To do this, you’ll call the spacy module’s load function.
+
+import spacy
+nlp = spacy.load('en_core_web_sm')
+# Next, you use the nlp object to create a spaCy Doc object33 representing the document to process.
+doc = nlp('In 1994, Tim Berners-Lee founded the')
+# The Doc object’s ents property returns a tuple of Span objects representing the named entities found in the Doc.
+for elements in doc.ents:
+    print(elements.text,":", elements.label_)
+
+
+## 12.6  Similarity Detection with spaCy
+# Similarity detection is the process of analyzing documents to determine how alike they are. One possible similarity detection technique is word frequency counting
+from pathlib import Path
+import spacy
+nlp_2 = spacy.load('en_core_web_sm')
+doc_1 = nlp_2(Path(r'E:\Languages\Python\NLP\file_1.txt').read_text())
+doc_2 = nlp_2(Path(r'E:\Languages\Python\NLP\file_2.txt').read_text())
+
+# Comparing the Books’ Similarity
+# Doc class’s similarity method to get a value from 0.0 (not similar) to 1.0 (identical) indicating
+similarity = doc_1.similarity(doc_2)
+print(f'similarity: {similarity}')
+print(f'similarity: {similarity:.2f}')
 
 
 
