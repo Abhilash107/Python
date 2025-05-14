@@ -94,7 +94,7 @@ wrong_predictions = []
 
 for i, j in zip(predicted, expected):
     if i != j:
-        wrong_predictions.append((int(i), (int(j))))
+        wrong_predictions.append(   ( int(i), int(j) ) )
 
 print(wrong_predictions)
 
