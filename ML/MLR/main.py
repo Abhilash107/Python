@@ -94,4 +94,52 @@ print(expected[:10])
 
 # ?With classification, we saw that the predictions were distinct classes that matched existing classes in the dataset. With regression, it’s tough to get exact predictions, because you have continuous outputs.
 
+# Visualizing the Expected vs. Predicted Prices
+# todo: 
+
+
+
+
+
+
+
+
+
+# * Regression Model Metrics
+#for comparing estimators to choose the best one(s) for your particular study.
+
+# Among the many metrics for regression estimators is the model’s coefficient of determination,
+# which is also called the R2 score. To calculate an estimator’s R2 score, call the
+# sklearn.metrics module’s r2_score function with the arrays representing the expected
+# and predicted results
+
+from sklearn import metrics
+print(metrics.r2_score(expected, predicted))
+
+
+# To calculate an estimator’s mean squared error, call function mean_squared_error (from
+# module sklearn.metrics) with the arrays representing the expected and predicted results
+print(metrics.mean_squared_error(expected, predicted))
+# ?imp: the one with the value closest to 0 best fits your data.
+
+# An R2 score of indicates that an estimator perfectly predicts the dependent variable’s value, given the independent variable(s) value(s).
+# Answer: 1.0.
+
+# * Choosing the Best Model
+
+from sklearn.linear_model import ElasticNet, Lasso, Ridge
+
+estimators = {
+    'LR': lr,
+    'ElasticNet': ElasticNet(),
+    'Lasso': Lasso(),
+    'Ridge': Ridge()
+}
+
+from sklearn.model_selection import KFold, cross_val_score
+
+for est_name, est_val in estimators.item():
+    kFold = KFold(n_splits=10, random_state=11, shuffle=True)
+    scores = cross_val_score(estimator=est_val, X=california.data, y=california.target, cv=kFold)
+    
 
