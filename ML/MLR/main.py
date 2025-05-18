@@ -138,8 +138,9 @@ estimators = {
 
 from sklearn.model_selection import KFold, cross_val_score
 
-for est_name, est_val in estimators.item():
+for est_name, est_val in estimators.items():
     kFold = KFold(n_splits=10, random_state=11, shuffle=True)
-    scores = cross_val_score(estimator=est_val, X=california.data, y=california.target, cv=kFold)
-    
+    scores = cross_val_score(estimator=est_val, X=california.data, y=california.target, cv=kFold, scoring='r2')
+    print(f'{scores.mean():.2f}')
+
 
