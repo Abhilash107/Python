@@ -53,7 +53,7 @@ sns.set_style('whitegrid')
 
 
 # *Displaying the pairplot in One Color
-grid = sns.pairplot(data=iris_df, vars=iris_df.columns[0:4])
+#grid = sns.pairplot(data=iris_df, vars=iris_df.columns[0:4])
 # plt.show()
 
 # ?1 (Fill-In) Seaborn’s function creates a grid of scatter plots showing features against one another.
@@ -87,5 +87,73 @@ print(kmeans.labels_[50:100])
 print(kmeans.labels_[100:150])
 
 
+# *Dimensionality Reduction with Principal Component Analysis
+
+# PCA estimator (from the sklearn.decomposition module) to perform dimensionality reduction. This estimator uses an algorithm called principal component analysis14 to analyze a dataset’s features and reduce them to the specified number of dimensions.
+
+from sklearn.decomposition import PCA
+pca = PCA(n_components=2, random_state=11)
+
+# 4 dimensions down to 2 dimensions.
+# *Transforming the Iris Dataset’s Features into Two Dimensions
+# Train the estimator and produce the reduced data by calling the PCA estimator’s methods fit and transform methods
+pca.fit(iris.data)
+
+iris_pca = pca.transform(iris.data)
+
+# When the method completes its task, it returns an array with the same number of rows as iris.data, but only two columns.
+print(iris_pca.shape)#(150, 2) from (150, 4)
+
+# * Visualizing the Reduced Data
+# todo:
+iris_pca_df = pd.DataFrame(iris_pca, columns=['comp1', 'comp2'])
+
+iris_pca_df['species'] = iris_df.species
 
 
+#axes = sns.scatterplot(iris_pca_df, x='comp1', y='comp2', hue='species', legend='brief', palette='cool')
+
+# plt.show()
+
+
+iris_centers = pca.transform(kmeans.cluster_centers_)
+# This statement reduces the centroids to the number of dimensions specified when the pca object was created. In the Iris case study, we were able to plot the reduced centroids in two dimensions at the centers of their corresponding clusters.
+dots = plt.scatter(iris_centers[:,0], iris_centers[:, 1], s=100, c='k')
+
+plt.show()
+
+# The keyword argument s=100 specifies the size of the plotted points, and the keyword argument c='k' specifies that the points should be displayed in black. 
+
+
+# ?Each centroid in a KMeans object’s cluster_centers_ array has the same number of features as the original dataset.
+#Answer: True.
+
+
+# * Choosing the Best Clustering Estimator
+from sklearn.cluster import DBSCAN, MeanShift, SpectralClustering, AgglomerativeClustering
+
+estimators = {
+    'KMeans': kmeans,
+    'DBSCAN': DBSCAN(),
+    'MeanShift': MeanShift(),
+    'SpectralClustering': SpectralClustering(n_clusters=3),
+    'AgglomerativeClustering': AgglomerativeClustering(n_clusters=3)
+}
+
+
+import numpy as np
+
+for name, estimator in estimators.items():
+    estimator.fit(iris.data)
+    print(f'\n{name}:')
+    for i in range(0, 101, 50):
+        labels, counts = np.unique(
+        estimator.labels_[i:i+50], return_counts=True)
+        print(f'{i}-{i+50}:')
+        for label, count in zip(labels, counts):
+            print(f' label={label}, count={count}')
+
+
+# We’re running KMeans here on the small Iris dataset. If you experience performance problems with KMeans on larger datasets, consider using the MiniBatchKMeans estimator. The scikit-learn documentation indicates that MiniBatchKMeans is faster on large datasets and the results are almost as good.
+
+# Though these algorithms label every sample, the labels simply indicate the clusters.What do you do with the cluster information once you have it? If your goal is to use the data in supervised machine learning, typically you’d study the samples in each cluster to try to determine how they’re related and label them accordingly.
