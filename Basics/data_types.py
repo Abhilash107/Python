@@ -49,12 +49,46 @@ print(len("Python")) # 6
 
 text = "I am IronMan"
 
-print(text.lower)
+
 print(text.lower())
+print(text.upper())
+print(text.strip())#Return a copy of the string with leading and trailing whitespace removed.
 
-print(text.upper)
-print()
-print()
-print()
-print()
+print(text.split())#Return a copy of the string with leading and trailing whitespace removed.
+# ['I', 'am', 'IronMan']
 
+print(text.split("a"))# ['I ', 'm IronM', 'n']
+
+print(text.replace("a", "B"))#I Bm IronMBn
+print(text.startswith("a"))#false
+print(text.endswith("h"))#false
+
+
+#BOOLEAN
+
+is_true = True
+is_false = False
+
+# Common falsy values:
+
+# False
+# None
+# 0
+# 0.0
+# ""
+# []
+# {}
+# set()
+
+
+# NoneType -> None represents absence of a value.
+#^ It is not the same as: 0 or "" or False
+res = None
+
+
+# You'll commonly encounter None when:
+
+# - a function doesn't explicitly return a value
+# - a value is missing
+# - an operation has no meaningful result
+# - an object/reference is intentionally empty
