@@ -50,3 +50,16 @@ word = 'Python'
 word[0]  # character in position 0
 
 word[5]  # character in position 5
+
+
+
+
+
+# Multi-line documentation/comments
+# Python doesn't have a dedicated multi-line comment syntax.
+# Triple-quoted strings are often used for documentation:
+
+"""
+This is a string literal.
+It can span multiple lines.
+"""
