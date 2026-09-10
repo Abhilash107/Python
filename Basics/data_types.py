@@ -92,3 +92,46 @@ res = None
 # - a value is missing
 # - an operation has no meaningful result
 # - an object/reference is intentionally empty
+
+#Type Conversion ⭐⭐⭐
+
+x = '10'
+
+x = int(x)
+
+print(x)
+print(type(x))#int
+
+print(int("10"))
+# print(int("h"))#ValueError: invalid literal for int() with base 10: 'h'
+
+
+# isinstance() ⭐⭐
+
+# Used to check whether an object is an instance of a type.
+
+print(isinstance(x, int))
+# type() = find the type, while isinstance() = check whether it is a particular type.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
