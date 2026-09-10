@@ -107,7 +107,6 @@ print(int("10"))
 
 
 # isinstance() ⭐⭐
-
 # Used to check whether an object is an instance of a type.
 
 print(isinstance(x, int))
