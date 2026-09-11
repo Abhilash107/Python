@@ -123,9 +123,101 @@ add(1, 2, 3, 4)
 # '**kwargs'
 # '**kwargs' allows a function to accept a variable number of keyword arguments.
 
+def show_info(**kwargs):
+    print(kwargs)
+
+show_info(name="A", age = 23, city='Cuttack')
+
+def show_detailed_info(**kwargs):
+    for k, v in kwargs.items():
+        print(k, v)
+
+show_detailed_info(name="A", age = 23, city='Cuttack')
 
 
+# ⭐ *args vs **kwargs
 
+# Remember this:
+
+# '*args'
+#    ↓
+# multiple positional arguments
+#    ↓
+# tuple
+
+# '**kwargs'
+#    ↓
+# multiple keyword arguments
+#    ↓
+# dictionary
+
+
+#Scope
+
+# Python follows the LEGB rule:
+
+# L → Local
+# E → Enclosing
+# G → Global
+# B → Built-in
+
+
+def fun():
+    name = 'A' # local var
+    print(name)
+
+fun()
+
+name = "Abhilash"# global var
+
+def get_name():
+    print(name)
+
+get_name()
+
+
+# Lambda Functions
+# lambda arguments: expression
+
+
+#normal
+def square(a):
+    print(a * a)
+
+
+square(5)
+
+#lambda function
+square_res = lambda x: x * x
+# print(square_res) #<function <lambda> at 0x000001CAA65A8040>
+
+res = square_res(5)
+print(res)
+
+
+add = lambda a, b: a + b
+
+res = add(2,3)
+print(res)
+
+
+# map()
+# applies a function to every element of an iterable.
+# In Python 3, map() returns a map iterator, not a list.
+
+nums = [1,3,5,7]
+result = map(lambda x: x + 2, nums)
+# print(result) # <map object at 0x000001AF21DCD480>
+print(list(result))
+
+
+# filter()
+# keeps elements for which a condition is True.
+
+nums = [1, 2, 3, 4, 5, 6, 7]
+result = filter(lambda x: x%2!=0, nums)
+
+print(list(result))
 
 
 
